@@ -7,7 +7,6 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
 const HotCollections = () => {
-  
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const [sliderRef, instanceRef] = useKeenSlider({
@@ -38,15 +37,15 @@ const HotCollections = () => {
     },
   });
 
-  const getPerView = ()=>{
-    const w = typeof window !=="undefined"?window.innerWidth : 1920;
+  const getPerView = () => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 1920;
     if (w <= 540) return 1;
     if (w <= 780) return 2;
     if (w <= 1200) return 3;
     return 4;
-    };
-     const [perView, setPerView] = useState(getPerView());
-   
+  };
+  const [perView, setPerView] = useState(getPerView());
+
   async function getCards() {
     setLoading(true);
     const { data } = await axios.get(
@@ -56,11 +55,11 @@ const HotCollections = () => {
     setLoading(false);
   }
 
-  useEffect(()=>{
-    const onResize = ()=>setPerView(getPerView());
+  useEffect(() => {
+    const onResize = () => setPerView(getPerView());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  },[])
+  }, []);
 
   useEffect(() => {
     getCards();
@@ -145,7 +144,6 @@ const HotCollections = () => {
                           <Link to="/explore">
                             <h4>{card.title}</h4>
                           </Link>
-                          <br></br>
 
                           <span>ERC-{card.code}</span>
                         </div>
