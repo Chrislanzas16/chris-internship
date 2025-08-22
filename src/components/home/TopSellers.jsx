@@ -20,7 +20,7 @@ const TopSellers = () => {
   useEffect(() => {
     getSellers();
   }, []);
-
+ // FROM MAIN!! DO NOT REMOVE
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
