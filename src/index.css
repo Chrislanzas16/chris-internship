@@ -146,3 +146,15 @@ h4 {
     padding: 1px 10px;
     height: 30px;
 }
+
+
+.img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.img-wrapper .fa-check {
+  position: absolute;
+  bottom: 5px;
+  font-size: 15px;
+}
