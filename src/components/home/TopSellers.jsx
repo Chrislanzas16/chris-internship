@@ -16,11 +16,11 @@ const TopSellers = () => {
     topSellers(data);
     setLoading(false);
   }
-
+  // Any Comment
   useEffect(() => {
     getSellers();
   }, []);
-
+ // FROM MAIN!! DO NOT REMOVE
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">

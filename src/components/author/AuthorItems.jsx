@@ -5,7 +5,7 @@ import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
-const AuthorItems = ({ items = [], loading, authorImage }) => {
+const AuthorItems = ({ items = [], authorImage }) => {
   return (
     <div className="de_tab_content">
       <div className="tab-1">
@@ -42,7 +42,7 @@ const AuthorItems = ({ items = [], loading, authorImage }) => {
                       </div>
                     </div>
                   </div>
-                  <Link to="/item-details">
+                  <Link to={`/item-details/${nft.nftId}`}>
                     <img
                       src={nft.nftImage}
                       className="lazy nft__item_preview"
@@ -51,7 +51,7 @@ const AuthorItems = ({ items = [], loading, authorImage }) => {
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to="/item-details">
+                  <Link to={`/item-details/${nft.nftId}`}>
                     <h4>{nft.title}</h4>
                   </Link>
                   <div className="nft__item_price">{nft.price} ETH</div>

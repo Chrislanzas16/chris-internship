@@ -13,7 +13,10 @@ const Author = () => {
   }, []);
   const { id } = useParams();
   const [author, setAuthor] = useState(null);
+
   const [isFollowing, setIsFollowing] = useState(false);
+
+
 
   async function getAuthor(id) {
     setLoading(true);
@@ -88,7 +91,10 @@ const Author = () => {
                       <div className="tab-1">
                         <div className="row">
                           {Array.from({ length: 8 }).map((_, i) => (
-                            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div
+                              className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                              key={i}
+                            >
                               <Skeleton width="100%" height="400px" />
                             </div>
                           ))}
@@ -97,25 +103,25 @@ const Author = () => {
                     </div>
                   </div>
                 </div>
-              ) : (
+              ) : author ? (
                 <>
                   <div className="col-md-12">
                     <div className="d_profile de-flex">
                       <div className="de-flex-col">
                         <div className="profile_avatar">
                           <div className="img-wrapper">
-                            <img src={author?.authorImage} alt="" />
+                            <img src={author.authorImage} alt="" />
 
                             <i className="fa fa-check"></i>
                           </div>
                           <div className="profile_name">
                             <h4>
-                              {author?.authorName}
+                              {author.authorName}
                               <span className="profile_username">
-                                @{author?.tag}
+                                @{author.tag}
                               </span>
                               <span id="wallet" className="profile_wallet">
-                                {author?.address}
+                                {author.address}
                               </span>
                               <button id="btn_copy" title="Copy Text">
                                 Copy
@@ -127,7 +133,7 @@ const Author = () => {
                       <div className="profile_follow de-flex">
                         <div className="de-flex-col">
                           <div className="profile_follower">
-                            {author?.followers} followers
+                            {author.followers} followers
                           </div>
                           <Link
                             to="#"
@@ -143,13 +149,14 @@ const Author = () => {
                   <div className="col-md-12">
                     <div className="de_tab tab_simple">
                       <AuthorItems
-                        items={author?.nftCollection || []}
-                        loading={loading}
-                        authorImage={author?.authorImage}
+                        items={author.nftCollection || []}
+                        authorImage={author.authorImage}
                       />
                     </div>
                   </div>{" "}
                 </>
+              ) : (
+                <p>no author</p>
               )}
             </div>
           </div>

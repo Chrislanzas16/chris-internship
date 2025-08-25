@@ -121,7 +121,7 @@ const HotCollections = () => {
                     <div className="keen-slider__slide" key={card.id}>
                       <div className="nft_coll">
                         <div className="nft_wrap">
-                          <Link to="/item-details">
+                          <Link to={`/item-details/${card.nftId}`}>
                             <img
                               src={card.nftImage}
                               className="lazy img-fluid"
