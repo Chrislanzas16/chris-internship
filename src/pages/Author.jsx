@@ -14,6 +14,10 @@ const Author = () => {
   const { id } = useParams();
   const [author, setAuthor] = useState(null);
 
+  const [isFollowing, setIsFollowing] = useState(false);
+
+
+
   async function getAuthor(id) {
     setLoading(true);
     const { data } = await axios.get(
@@ -22,6 +26,14 @@ const Author = () => {
     setAuthor(data);
     setLoading(false);
   }
+
+  const handleFollow = () => {
+    setAuthor((prev) => ({
+      ...prev,
+      followers: prev.followers + (isFollowing ? -1 : 1),
+    }));
+    setIsFollowing(!isFollowing);
+  };
 
   useEffect(() => {
     getAuthor(id);
@@ -123,8 +135,12 @@ const Author = () => {
                           <div className="profile_follower">
                             {author.followers} followers
                           </div>
-                          <Link to="#" className="btn-main">
-                            Follow
+                          <Link
+                            to="#"
+                            className="btn-main"
+                            onClick={handleFollow}
+                          >
+                            {isFollowing ? "Unfollow" : "Follow"}
                           </Link>
                         </div>
                       </div>
